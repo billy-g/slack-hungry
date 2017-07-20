@@ -23,6 +23,10 @@ app.get('/', function(req, res) {
 app.post('/post', function(req, res) {
 
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
+  if (req.body.text === ""){
+    req.body.text === "american"
+  };
+
   var term = (req.body.text).toUpperCase();
 
   //pull array of all cuisine_names and cuisine_ids based on location
