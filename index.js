@@ -22,7 +22,6 @@ app.get('/', function(req, res) {
 //app.post is triggered when a POST request is sent to the URL ‘/post’
 app.post('/post', function(req, res) {
 
-  if (req.body.text !== )
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
   var term = (req.body.text).toUpperCase();
 
