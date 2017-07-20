@@ -9,7 +9,7 @@ var request = require('request');
 //var term = "Korean";
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 //use port is set in the environment variable, or 9001 if it isn’t set.
 app.set('port', (process.env.PORT || 9001));
@@ -23,14 +23,16 @@ app.get('/', function(req, res) {
 app.post('/post', function(req, res) {
 
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
+  console.log(req.body.text)
   var term = (req.body.text).toUpperCase();
+
 
   //pull array of all cuisine_names and cuisine_ids based on location
   z.cuisines({city_id: 306}).then(function(cuisines) {
 
     //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
     var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
-    if (cuisine == undefined){
+    if (cuisine == undefined) {
       cuisine_id = 1
     } else {
       cuisine_id = cuisine[0]["cuisine_id"]
