@@ -24,7 +24,7 @@ app.post('/post', function(req, res) {
 
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
   if (req.body.text === ""){
-    req.body.text === "american"
+    req.body.text = "american"
   };
 
   var term = (req.body.text).toUpperCase();
