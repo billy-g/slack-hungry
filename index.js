@@ -30,16 +30,12 @@ app.post('/post', function(req, res) {
   //pull array of all cuisine_names and cuisine_ids based on location
   z.cuisines({city_id: 306}).then(function(cuisines) {
 
+    console.log(cuisines);
+
     //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
     var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
     console.log(cuisine)
-    if (cuisine == []) {
-      cuisine_id = 1
-    } else {
-      cuisine_id = cuisine[0]["cuisine_id"]
-    };
-
-    console.log(cuisine_id);
+    cuisine_id = cuisine[0]["cuisine_id"]
 
     //do another search based on the cuisine_id
     z.search({city_id: 306, cuisines: cuisine_id}).then(function(restaurants) {
