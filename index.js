@@ -6,7 +6,7 @@ const z = new Zomato(process.env.ZO_ACCESS);
 var lodash = require('lodash');
 var request = require('request');
 //driver for testing
-var term = "KOREAN";
+//var term = "KOREAN";
 
 //use port is set in the environment variable, or 9001 if it isn’t set.
 app.set('port', (process.env.PORT || 9001));
@@ -18,6 +18,10 @@ app.get('/', function(req, res) {
 
 //app.post is triggered when a POST request is sent to the URL ‘/post’
 app.post('/post', function(req, res) {
+
+  //take slack command param for cuisine type
+  var term = req.body.text
+
   //pull array of all cuisine_names and cuisine_ids based on location
   z.cuisines({city_id: 306}).then(function(cuisines) {
 
