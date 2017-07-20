@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
 app.post('/post', function(req, res) {
 
   //take slack command param for cuisine type
-  var term = req.body.text
+  var term = req.body.text;
 
   //pull array of all cuisine_names and cuisine_ids based on location
   z.cuisines({city_id: 306}).then(function(cuisines) {
