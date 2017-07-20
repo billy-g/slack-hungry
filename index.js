@@ -32,6 +32,7 @@ app.post('/post', function(req, res) {
 
     //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
     var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
+    console.log(cuisine)
     if (cuisine == undefined) {
       cuisine_id = 1
     } else {
