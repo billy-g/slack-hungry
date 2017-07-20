@@ -24,16 +24,18 @@ app.post('/post', function(req, res) {
 
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
   var term = (req.body.text).toUpperCase();
-  if (term === ""){
-    term = "american"
-  };
 
   //pull array of all cuisine_names and cuisine_ids based on location
   z.cuisines({city_id: 306}).then(function(cuisines) {
 
     //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
     var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
-    cuisine_id = cuisine[0]["cuisine_id"]
+    if (cuisine == undefined){
+      cuisine_id = 1
+    } else {
+      cuisine_id = cuisine[0]["cuisine_id"]
+    };
+
     console.log(cuisine_id);
 
     //do another search based on the cuisine_id
