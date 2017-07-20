@@ -22,8 +22,8 @@ app.get('/', function(req, res) {
 //app.post is triggered when a POST request is sent to the URL ‘/post’
 app.post('/post', function(req, res) {
 
-  //take slack command param for cuisine type
-  var term = req.body.text;
+  //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
+  var term = (req.body.text).toUpperCase();
 
   //pull array of all cuisine_names and cuisine_ids based on location
   z.cuisines({city_id: 306}).then(function(cuisines) {
