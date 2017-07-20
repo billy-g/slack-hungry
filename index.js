@@ -23,7 +23,6 @@ app.get('/', function(req, res) {
 app.post('/post', function(req, res) {
 
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
-  console.log(req.body.text)
   var term = (req.body.text).toUpperCase();
 
 
@@ -31,13 +30,10 @@ app.post('/post', function(req, res) {
   z.cuisines({city_id: 306}).then(function(cuisines) {
 
     var result = lodash.find(cuisines, x => x.cuisine_name.toUpperCase() === term);
-    console.log(result);
     if (result == undefined){
-      console.log("undefined");
       cuisine_id = 1;
     } else {
       //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
-      console.log("defined");
       var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
       cuisine_id = cuisine[0]["cuisine_id"];
     };
