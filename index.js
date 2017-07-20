@@ -33,12 +33,13 @@ app.post('/post', function(req, res) {
     var result = lodash.find(cuisines, x => x.cuisine_name.toUpperCase() === term);
     console.log(result);
     if (result == undefined){
-      cuisine_id = 1
+      console.log("undefined");
+      cuisine_id = 1;
     } else {
       //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
+      console.log("defined");
       var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
-      console.log(cuisine)
-      cuisine_id = cuisine[0]["cuisine_id"]
+      cuisine_id = cuisine[0]["cuisine_id"];
     };
 
     //do another search based on the cuisine_id
