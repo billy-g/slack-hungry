@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 const Zomato = require('zomato.js');
 //api_key to be replaced by process.env.ZO_ACCESS variable
-const z = new Zomato('0327816058cfaf1b50a52d291b9be1b5');
+const z = new Zomato(process.env.ZO_ACCESS);
 var lodash = require('lodash');
 var request = require('request');
 //driver for testing
