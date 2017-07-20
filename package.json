@@ -4,11 +4,13 @@
   "description": "Slack command that picks a random restaurant in San Francisco based on cuisine",
   "main": "index.js",
   "dependencies": {
+    "body": "^5.1.0",
     "express": "^4.15.3",
     "jQuery": "^1.7.4",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "node-zomato": "^1.0.3",
+    "parser": "^0.1.4",
     "zomato": "^1.1.0",
     "zomato.js": "^1.0.4"
   },
@@ -16,6 +18,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Billy G",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billy-g/slack-mato.git"
+  },
+  "bugs": {
+    "url": "https://github.com/billy-g/slack-mato/issues"
+  },
+  "homepage": "https://github.com/billy-g/slack-mato#readme"
 }

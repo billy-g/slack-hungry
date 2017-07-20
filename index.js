@@ -6,7 +6,10 @@ const z = new Zomato(process.env.ZO_ACCESS);
 var lodash = require('lodash');
 var request = require('request');
 //driver for testing
-//var term = "KOREAN";
+//var term = "Korean";
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //use port is set in the environment variable, or 9001 if it isn’t set.
 app.set('port', (process.env.PORT || 9001));
