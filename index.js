@@ -22,6 +22,7 @@ app.get('/', function(req, res) {
 //app.post is triggered when a POST request is sent to the URL ‘/post’
 app.post('/post', function(req, res) {
 
+  if (req.body.text !== )
   //take slack command param for cuisine type; all-caps in order to bypass case-sensitivity
   var term = (req.body.text).toUpperCase();
 
@@ -31,6 +32,7 @@ app.post('/post', function(req, res) {
     //pull cuisine_id from the cuisine array via uppercase term in order to use case-insensitive message
     var cuisine = lodash.filter(cuisines, x => x.cuisine_name.toUpperCase() === term);
     cuisine_id = cuisine[0]["cuisine_id"]
+    console.log(cuisine_id);
 
     //do another search based on the cuisine_id
     z.search({city_id: 306, cuisines: cuisine_id}).then(function(restaurants) {
